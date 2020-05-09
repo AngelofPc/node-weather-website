@@ -48,21 +48,16 @@ app.get("/weather", (req, res) => {
 
   geocode(req.query.address, (error, { lat, log, location } = {}) => {
     if (error) {
-      return res.send({ error: error, address: req.query.address }); //short hand will be error only since the names are the same
+      return res.send({ error }); //short hand will be error only since the names are the same
     }
 
     forecast(lat, log, (error, forcastData) => {
       if (error) {
-        return res.send({
-          error,
-          data: log,
-          da: lat,
-          address: req.query.address,
-        });
+        return res.send({ error });
       }
 
       res.send({
-        forcast: forcastData,
+        forecast: forcastData,
         location,
         address: req.query.address,
       });

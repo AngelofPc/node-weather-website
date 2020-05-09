@@ -10,8 +10,6 @@ weatherForm.addEventListener("submit", (e) => {
 
   const location = search.value;
 
-  console.log(location);
-
   messageOne.textContent = "Loading";
   messageTwo.textContent = "";
 
@@ -20,8 +18,8 @@ weatherForm.addEventListener("submit", (e) => {
       if (data.error) {
         messageOne.textContent = data.error;
       } else {
-        messageOne = data.location;
-        messageTwo = data.forecast;
+        messageOne.textContent = data.location;
+        messageTwo.textContent = data.forecast;
       }
     });
   });
